@@ -27,12 +27,6 @@ namespace DummyDatabase
         {
             InitializeComponent();   
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("DUMMYDB - BEGGINING");
-        }
-
         private void OpenDatabase_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new CommonOpenFileDialog();
@@ -44,7 +38,7 @@ namespace DummyDatabase
 
                 DbDataVisualizer test = new DbDataVisualizer();
 
-                test.VisuilizeDbMetadata(databaseView, folder);
+                test.VisualizeDbMetadata(databaseView, folder);
             }   
         }
     }

@@ -41,5 +41,8 @@
         </DockPanel>
 
         <TreeView Grid.Row="1" Grid.Column="0" Name ="databaseView" Background="#62B1D0"/>
+        <DataGrid Name="databaseGrid">
+            
+        </DataGrid>
     </Grid>
 </Window>
