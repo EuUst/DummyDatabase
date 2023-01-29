@@ -5,9 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DummyDatabase"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="291,171,290,209">
-        <Button Content="Click me" FontSize="13"
-                Click="Button_Click" />
+        Title="DummyDatabase(alpha)" Height="450" Width="600">
+
+    <Grid Background="#024C68">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.025*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="1.7*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GridSplitter Grid.Column="1" 
+                      Grid.RowSpan="2"
+                      ShowsPreview="False" 
+                      Width="5"
+                      HorizontalAlignment = "Center" 
+                      VerticalAlignment="Stretch"
+                      Background="White"/>
+        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="Open database" Click="OpenDatabase_Click"/>
+                    <MenuItem Header="Create database"/>
+                </MenuItem>
+                <MenuItem Header="Tools">
+                    <MenuItem Header="Create DB request"/>
+                    <MenuItem Header="Enter edit mode"/>
+                </MenuItem>
+            </Menu>
+
+        </DockPanel>
+
+        <TreeView Grid.Row="1" Grid.Column="0" Name ="databaseView" Background="#62B1D0"/>
     </Grid>
 </Window>

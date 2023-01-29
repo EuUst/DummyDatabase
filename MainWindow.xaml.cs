@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DummyDatabase.Desktop;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace DummyDatabase
 {
@@ -22,12 +25,27 @@ namespace DummyDatabase
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();   
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("DUMMYDB - BEGGINING");
+        }
+
+        private void OpenDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+     
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                string folder = dialog.FileName;
+
+                DbDataVisualizer test = new DbDataVisualizer();
+
+                test.VisuilizeDbMetadata(databaseView, folder);
+            }   
         }
     }
 }
