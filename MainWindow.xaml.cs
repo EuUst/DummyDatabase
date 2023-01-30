@@ -1,30 +1,26 @@
 ﻿using System.Windows;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
-namespace DummyDatabase
+namespace DummyDatabase.Desktop;
+
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
+        InitializeComponent();                
+    }
+    private void OpenDatabase_Click(object sender, RoutedEventArgs e)
+    {
+        var dialog = new CommonOpenFileDialog();
+        dialog.IsFolderPicker = true;
+ 
+        if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
         {
-            InitializeComponent();                
-        }
-        private void OpenDatabase_Click(object sender, RoutedEventArgs e)
-        {
-            var dialog = new CommonOpenFileDialog();
-            dialog.IsFolderPicker = true;
-     
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                string folder = dialog.FileName;
+            string folder = dialog.FileName;
 
-                MainVindowViewModel dbVisualizer = new MainVindowViewModel(folder, databaseGrid);
+            MainVindowViewModel dbVisualizer = new MainVindowViewModel(folder, databaseGrid);
 
-                dbVisualizer.VisualizeDbMetadata(databaseView);
-            }
+            dbVisualizer.VisualizeDbMetadata(databaseView);
         }
     }
 }

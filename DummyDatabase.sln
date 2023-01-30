@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DummyDatabase", "DummyDatabase.csproj", "{D47B9513-7E46-4A3A-8238-7BFDCA07B17E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DummyDatabase.Desktop", "DummyDatabase.Desktop.csproj", "{D47B9513-7E46-4A3A-8238-7BFDCA07B17E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DummyDatabase.Core", "..\DummyDatabase.Core\DummyDatabase.Core.csproj", "{EB7B6A89-01E2-4477-B18B-86F58655542E}"
 EndProject

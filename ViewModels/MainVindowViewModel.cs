@@ -1,12 +1,11 @@
 ﻿using DummyDatabase.Core.DataWork;
-using DummyDatabase.Core.SchemaWork;
-using DummyDatabase.Core.TableWork;
+using DummyDatabase.Core.Models;
 using System.Windows.Controls;
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Data;
 
-namespace DummyDatabase
+namespace DummyDatabase.Desktop
 {
     public class MainVindowViewModel
     {
@@ -15,13 +14,13 @@ namespace DummyDatabase
         private DataGrid dataGrid;
         public MainVindowViewModel(string databasePath)
         {
-            dataWork = new DataWork(new DesktopLogger(), new SchemaValidator());
+            dataWork = new DataWork(new DesktopLoggerService(), new SchemaValidator());
             database = dataWork.CreateDatabaseByFile(databasePath);
         }
 
         public MainVindowViewModel(string databasePath, DataGrid datagrid)
         {
-            dataWork = new DataWork(new DesktopLogger(), new SchemaValidator());
+            dataWork = new DataWork(new DesktopLoggerService(), new SchemaValidator());
             database = dataWork.CreateDatabaseByFile(databasePath);
             dataGrid = datagrid;
         }

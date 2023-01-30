@@ -1,9 +1,9 @@
 using System.Windows;
 using DummyDatabase.Core.DataWork;
 
-namespace DummyDatabase
+namespace DummyDatabase.Desktop
 {
-    public class DesktopLogger : ILogger
+    public class DesktopLoggerService : ILoggerService
     {
         public void DebugError(string message)
         {
