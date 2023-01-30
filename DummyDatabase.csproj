@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DummyDatabase.Desktop\DummyDatabase.Desktop.csproj" />
+    <ProjectReference Include="..\DummyDatabase.Core\DummyDatabase.Core.csproj" />
   </ItemGroup>
 
 </Project>

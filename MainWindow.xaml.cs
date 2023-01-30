@@ -1,19 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DummyDatabase.Desktop;
+﻿using System.Windows;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace DummyDatabase
@@ -25,7 +10,7 @@ namespace DummyDatabase
     {
         public MainWindow()
         {
-            InitializeComponent();   
+            InitializeComponent();                
         }
         private void OpenDatabase_Click(object sender, RoutedEventArgs e)
         {
@@ -36,10 +21,10 @@ namespace DummyDatabase
             {
                 string folder = dialog.FileName;
 
-                DbDataVisualizer test = new DbDataVisualizer();
+                MainVindowViewModel dbVisualizer = new MainVindowViewModel(folder, databaseGrid);
 
-                test.VisualizeDbMetadata(databaseView, folder);
-            }   
+                dbVisualizer.VisualizeDbMetadata(databaseView);
+            }
         }
     }
 }
