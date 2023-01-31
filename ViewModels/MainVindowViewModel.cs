@@ -35,7 +35,7 @@ namespace DummyDatabase.Desktop
 
                 foreach(var column in table.Schema.Columns)
                 {
-                    tableView.Items.Add($"{column.Name} - {column.Type} - isPrimary: {column.IsPrimary}");
+                    tableView.Items.Add($"{column.Name} - {column.Type} - isPrimary: {column.IsPrimary} - isForeignKey: {column.IsForeignKey}");
                 }
 
                 tables.Items.Add(tableView);
