@@ -7,10 +7,12 @@
         mc:Ignorable="d"
         Title="DummyDatabase(alpha)" Height="450" Width="600">
 
-    <Grid Background="#024C68">
+    <Grid Background="#5EC4CD">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.025*" MinHeight="18"></RowDefinition>
+            <RowDefinition Height="0.025*" MinHeight="18"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
@@ -20,13 +22,13 @@
         </Grid.ColumnDefinitions>
         
         <GridSplitter Grid.Column="1" 
-                      Grid.RowSpan="2"
+                      Grid.RowSpan="5"
                       ShowsPreview="False" 
                       Width="2"
                       HorizontalAlignment = "Center" 
                       VerticalAlignment="Stretch"
                       Background="White"/>
-        
+
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="File">
@@ -39,12 +41,12 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-
-        <TreeView Grid.Row="1" 
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="Explorer" Grid.Row="1" Margin="6,0,0,0"/>
+        <TreeView Grid.Row="2" 
                   Grid.Column="0" 
                   Name ="databaseMetadata" 
-                  Background="#62B1D0"/>
-
+                  Background="White">
+        </TreeView>
         <DataGrid Name="databaseGrid" 
                   Grid.RowSpan="5" 
                   Grid.Column="2" 
