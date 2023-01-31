@@ -18,9 +18,9 @@ public partial class MainWindow : Window
         {
             string folder = dialog.FileName;
 
-            MainVindowViewModel dbVisualizer = new MainVindowViewModel(folder, databaseGrid);
+            MainVindowViewModel viewModel = new MainVindowViewModel(folder, databaseGrid);
 
-            dbVisualizer.VisualizeDbMetadata(databaseView);
+            viewModel.VisualizeDbMetadata(databaseMetadata);
         }
     }
 }

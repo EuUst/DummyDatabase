@@ -8,20 +8,21 @@
         Title="DummyDatabase(alpha)" Height="450" Width="600">
 
     <Grid Background="#024C68">
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.025*"></RowDefinition>
+            <RowDefinition Height="0.025*" MinHeight="18"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="1.7*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        
         <GridSplitter Grid.Column="1" 
                       Grid.RowSpan="2"
                       ShowsPreview="False" 
-                      Width="5"
+                      Width="2"
                       HorizontalAlignment = "Center" 
                       VerticalAlignment="Stretch"
                       Background="White"/>
@@ -37,12 +38,19 @@
                     <MenuItem Header="Enter edit mode"/>
                 </MenuItem>
             </Menu>
-
         </DockPanel>
 
-        <TreeView Grid.Row="1" Grid.Column="0" Name ="databaseView" Background="#62B1D0"/>
-        <DataGrid Name="databaseGrid" Grid.RowSpan="5" Grid.Column="2" Background="#024C68" CanUserAddRows="True" CanUserReorderColumns="True"  CanUserResizeRows="True">
-            
-        </DataGrid>
+        <TreeView Grid.Row="1" 
+                  Grid.Column="0" 
+                  Name ="databaseMetadata" 
+                  Background="#62B1D0"/>
+
+        <DataGrid Name="databaseGrid" 
+                  Grid.RowSpan="5" 
+                  Grid.Column="2" 
+                  Background="#024C68" 
+                  CanUserAddRows="True" 
+                  CanUserReorderColumns="True"
+                  CanUserResizeRows="True"/>
     </Grid>
 </Window>

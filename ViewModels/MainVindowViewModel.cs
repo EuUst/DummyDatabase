@@ -2,38 +2,31 @@
 using DummyDatabase.Core.Models;
 using System.Windows.Controls;
 using System.Linq;
-using System.Collections.Generic;
 using System.Windows.Data;
 
 namespace DummyDatabase.Desktop
 {
     public class MainVindowViewModel
     {
-        private Database database;
+        private Database currentDatabase;
         private DataWork dataWork;
         private DataGrid dataGrid;
-        public MainVindowViewModel(string databasePath)
-        {
-            dataWork = new DataWork(new DesktopLoggerService(), new SchemaValidator());
-            database = dataWork.CreateDatabaseByFile(databasePath);
-        }
-
         public MainVindowViewModel(string databasePath, DataGrid datagrid)
         {
             dataWork = new DataWork(new DesktopLoggerService(), new SchemaValidator());
-            database = dataWork.CreateDatabaseByFile(databasePath);
+            currentDatabase = dataWork.CreateDatabaseByFile(databasePath);
             dataGrid = datagrid;
         }
 
         public void VisualizeDbMetadata(TreeView treeView)
         {
             TreeViewItem databaseView = new TreeViewItem();
-            databaseView.Header = database.Name;
+            databaseView.Header = currentDatabase.Name;
 
             TreeViewItem tables = new TreeViewItem();
             tables.Header = "Tables";
             
-            foreach(var table in database.Tables)
+            foreach(var table in currentDatabase.Tables)
             {
                 TreeViewItem tableView = new TreeViewItem();
                 tableView.Header = table.Schema.Name;
@@ -56,30 +49,20 @@ namespace DummyDatabase.Desktop
         private void TableViewSelected(object sender, System.Windows.RoutedEventArgs e)
         {
             dataGrid.Columns.Clear();
-            //dataGrid.Items.Clear();
-            dataGrid.ItemsSource = null;
             string tableName = ((TreeViewItem)sender).Header.ToString();
             VisualizeDbData(dataGrid, tableName);
         }
         private void TableViewUnselected(object sender, System.Windows.RoutedEventArgs e)
         {
-            dataGrid.Columns.Clear();
-              
+            dataGrid.Columns.Clear();          
         }
 
         private void VisualizeDbData(DataGrid dataGrid, string tableName)
         {
-            Table table = database.Tables.Where(x => tableName == x.Name).First();
+            Table table = currentDatabase.Tables.Where(x => tableName == x.Name).First();
             dataGrid.AutoGenerateColumns = false;
-            /*foreach (Column column in table.Schema.Columns)
-            {
-                DataGridTextColumn textColumn = new DataGridTextColumn();
-                textColumn.Width = DataGridLength.Auto;
-                textColumn.Header = column.Name;
-                dataGrid.Columns.Add(textColumn);
-            }*/
 
-            dataGrid.ItemsSource = AdaptAllRows(table.Rows);
+            dataGrid.ItemsSource = table.GetRowsData();
 
             for(int i = 0; i < table.Schema.Columns.Count; i++)
             {
@@ -89,25 +72,6 @@ namespace DummyDatabase.Desktop
                     Binding = new Binding($"Data[{i}]")
                 });
             }          
-        }
-        private List<RowAdapter> AdaptAllRows(List<Row> rows)
-        {
-            List<RowAdapter> resList = new List<RowAdapter>();
-            foreach (var item in rows)
-            {
-                resList.Add(new RowAdapter());
-                resList[resList.Count - 1].Data = new List<object>();
-                foreach (var data in item.Data)
-                {
-                    resList[resList.Count - 1].Data.Add(data.Value);
-                }
-            }
-            return resList;
-        }
-
-        private class RowAdapter
-        {
-            public List<object> Data { get; set; }
         }
     }
 }
